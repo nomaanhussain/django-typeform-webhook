@@ -35,15 +35,15 @@ def index(request):
         receivedSignature = request.headers.get("typeform-signature")
 
         if receivedSignature is None:
-            return HttpResponse("Permission denied.", status=403)
+            return JsonResponse({"status":False,"message":"Permission denied."})
         
         sha_name, signature = receivedSignature.split('=', 1)
         if sha_name != 'sha256':
-            return HttpResponse("Operation not supported.", status=501)
+            return JsonResponse({"status":False,"message":"Operation not supported."})
 
         is_valid = verifySignature(signature, raw)
         if(is_valid != True):
-            return HttpResponse("Invalid signature. Permission Denied.", status=403)
+            return JsonResponse({"status":False,"message":"Invalid signature. Permission Denied."})
         
         print("\nsignature Verified")
 
