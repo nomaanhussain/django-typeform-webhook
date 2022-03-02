@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-*m*9mdycv%*pg42rj5c++m$5l@u@n#cs6h8$)bgma-slqd!^y+'
 
-typeform_secret = '301944ac4eadfb87bb9dd1c0cbc9997db9423464'
+TYPEFORM_SECRET = '301944ac4eadfb87bb9dd1c0cbc9997db9423464'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 

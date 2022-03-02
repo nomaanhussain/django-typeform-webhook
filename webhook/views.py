@@ -12,7 +12,7 @@ from django.conf import settings
 def verifySignature(receivedSignature: str, payload):
 
     
-    WEBHOOK_SECRET = settings.typeform_secret
+    WEBHOOK_SECRET = settings.TYPEFORM_SECRET
 
     digest = hmac.new(WEBHOOK_SECRET.encode('utf-8'), payload, hashlib.sha256).digest()
     
