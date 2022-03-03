@@ -42,13 +42,16 @@ def index(request):
             return JsonResponse({"status":False,"message":"Operation not supported."})
 
         is_valid = verifySignature(signature, raw)
+        
         if(is_valid != True):
             return JsonResponse({"status":False,"message":"Invalid signature. Permission Denied."})
         
-        print("\nsignature Verified")
+        elif is_valid:
+            print("\nsignature Verified")
 
-        print("\nTypeform webhook", request_body)
+            print("\nTypeform webhook", request_body)
 
-        return JsonResponse({"status":True,"message":"success"})
-
-    return JsonResponse({"status":False,"message":"post request accepted"})
+            return JsonResponse({"status":True,"message":"success"})
+        
+    if request.method == 'GET':
+        return JsonResponse({"status":False,"message":"post request accepted"})
